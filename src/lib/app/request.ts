@@ -22,12 +22,6 @@ export async function saveRequest(
     ...request,
   };
 
-  room.pathKey = Object.entries(room.requests).reduce((acc, [key, value]) => {
-    const pathKey = `${value.method}_${value.path}`;
-    acc[pathKey] = key;
-    return acc;
-  }, {} as Record<string, string>);
-
   await saveRoom(roomId, room);
 
   return {

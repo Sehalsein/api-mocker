@@ -1,4 +1,5 @@
 import EditorLayout from "@/src/components/layout/Editor/layout";
+import { Button } from "@/src/components/ui/button";
 import {
   SidebarInset,
   SidebarProvider,
@@ -6,6 +7,8 @@ import {
 } from "@/src/components/ui/sidebar";
 import app from "@/src/lib/app";
 import RequestSidebar from "@/src/view/request/RequestSidebar";
+import { Github } from "lucide-react";
+import Link from "next/link";
 import { PropsWithChildren } from "react";
 
 export default async function Layout(
@@ -30,8 +33,17 @@ export default async function Layout(
     >
       <RequestSidebar requests={room.requests} roomId={params.roomId} />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 px-4">
+        <header className="flex h-16 shrink-0 items-center gap-2 px-4 justify-between">
           <SidebarTrigger className="-ml-1" />
+          <div className="gap-2">
+            <Button asChild variant="ghost">
+              <Link href={`/e/${params.roomId}`}>
+                <span className="sr-only">Github</span>
+                <Github className="h-6 w-6" />
+              </Link>
+            </Button>
+            {/* <ThemeToggle /> */}
+          </div>
         </header>
         <EditorLayout
           className="flex flex-1 flex-col gap-4 p-4"

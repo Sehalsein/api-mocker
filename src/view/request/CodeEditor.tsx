@@ -100,7 +100,7 @@ export default function CodeEditor({ roomId, requestId }: CodeEditorProps) {
   const code = appSchemaToTypes(schema);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 ">
       <Header editorRef={editorRef} requestId={requestId} roomId={roomId} />
       <Editor editorRef={editorRef} defaultValue={code} />
     </div>
@@ -130,6 +130,7 @@ const Editor = memo(function Editor({
   return (
     <EditorRoot
       height="70vh"
+      theme="vs-dark"
       defaultLanguage={LANGUAGES.TYPESCRIPT}
       defaultValue={`${HELPER_COMMENTS[LANGUAGES.TYPESCRIPT]}\n${defaultValue}`}
       onMount={handleEditorDidMount}

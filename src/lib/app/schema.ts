@@ -17,7 +17,6 @@ export async function saveSchema(
   requests[requestId].schema = schema;
 
   room.requests = requests;
-  room.updatedAt = new Date().toISOString();
 
   await saveRoom(roomId, room);
 

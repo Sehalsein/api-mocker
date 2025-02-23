@@ -11,16 +11,14 @@ export async function GET(req: Request) {
 
   const room = await getRoom(roomId);
 
+  console.log(room, pathKey);
+
   const requestId = room.pathKey[pathKey];
 
   if (!requestId) {
     return new Response(
       JSON.stringify({
-        message: "Request not found",
-        roomId,
-        stringPath,
-        pathname: url.pathname,
-        pathKey,
+        message: "Request route not found",
       }),
       {
         headers: {
